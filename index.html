@@ -71,6 +71,103 @@
             animation: pulse-subtle 2s infinite ease-in-out;
         }
     </style>
+
+<style>
+/* ADVANCED_IMAGE_CONTROLS_START */
+.match-image-control {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid rgba(148,163,184,.25);
+    border-radius: 16px;
+    background: rgba(148,163,184,.06);
+}
+
+.match-image-preview-box {
+    position: relative;
+    min-height: 110px;
+    border: 2px dashed rgba(148,163,184,.35);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(148,163,184,.05);
+}
+
+.match-image-preview-box img {
+    display: block;
+    width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.match-image-empty {
+    color: #94a3b8;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    padding: 20px;
+}
+
+.match-image-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.match-image-actions button,
+.match-image-actions label {
+    min-height: 40px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    border: 1px solid rgba(148,163,184,.25);
+}
+
+.match-image-upload {
+    background: #7c3aed;
+    color: white;
+    border-color: transparent !important;
+}
+
+.match-image-remove {
+    background: rgba(148,163,184,.12);
+    color: inherit;
+}
+
+.match-image-file {
+    display: none !important;
+}
+
+.manual-preview-image {
+    width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+    border-radius: 14px;
+    margin-top: 8px;
+}
+
+.manual-preview-pair {
+    min-width: 0;
+}
+
+@media (max-width: 640px) {
+    .match-image-preview-box {
+        min-height: 90px;
+    }
+
+    .match-image-preview-box img {
+        max-height: 140px;
+    }
+}
+/* ADVANCED_IMAGE_CONTROLS_END */
+</style>
+
 </head>
 <body class="bg-indigo-50/50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
 
@@ -178,8 +275,8 @@
                         Play engaging educational games, drag and drop fruits, flip memory cards, or generate your own custom AI-powered games!
                     </p>
                     <div class="pt-4 flex flex-wrap gap-4">
-                        <button onclick="navigateTo('game-fruit')" class="px-6 py-3.5 bg-amber-400 hover:bg-amber-300 text-amber-950 font-black text-lg rounded-2xl shadow-lg shadow-amber-500/30 bounce-hover flex items-center gap-2">
-                            <i class="fa-solid fa-apple-whole"></i> Play Fruit Compare!
+                        <button onclick="startFruitCompare2()" class="px-6 py-3.5 bg-amber-400 hover:bg-amber-300 text-amber-950 font-black text-lg rounded-2xl shadow-lg shadow-amber-500/30 bounce-hover flex items-center gap-2">
+                            <i class="fa-solid fa-apple-whole"></i> More, Less & Equal
                         </button>
                         <button onclick="navigateTo('my-games')" class="px-6 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border-2 border-white/30 font-bold text-lg rounded-2xl bounce-hover flex items-center gap-2">
                             <i class="fa-solid fa-folder-open"></i> My Custom Games
@@ -234,15 +331,38 @@
                                 </span>
                                 <span class="text-xs text-slate-400 font-bold">Greater • Less • Equal</span>
                             </div>
-                            <h3 class="text-2xl font-black text-slate-800 dark:text-white">Fruit Compare</h3>
+                            <h3 class="text-2xl font-black text-slate-800 dark:text-white">More, Less & Equal</h3>
                             <p class="text-slate-600 dark:text-slate-300 text-sm mt-2">
                                 Compare colorful fruits and choose Greater Than, Less Than, or Equal!
                             </p>
                         </div>
                         <button onclick="startFruitCompare2()" class="mt-6 w-full py-3 bg-pink-500 hover:bg-pink-600 text-white font-black text-lg rounded-xl shadow-lg shadow-pink-500/30 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-play"></i> Play Fruit Compare
+                            <i class="fa-solid fa-play"></i> Play Now
                         </button>
                     </div>
+
+                    <!-- Flash Cards -->
+                    <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 border-2 border-cyan-200 dark:border-cyan-900 shadow-xl hover:shadow-2xl transition-all bounce-hover flex flex-col justify-between">
+                        <div>
+                            <div class="w-full h-40 bg-gradient-to-tr from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center text-6xl shadow-inner mb-4">
+                                🃏 📚 ✨
+                            </div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 text-xs font-black px-3 py-1 rounded-full uppercase">
+                                    Learning & Memory
+                                </span>
+                                <span class="text-xs text-slate-400 font-bold">All Ages</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-slate-800 dark:text-white">Flash Cards</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm mt-2">
+                                Flip colorful cards to learn words, numbers, pictures, and new concepts!
+                            </p>
+                        </div>
+                        <button onclick="startFlashCards()" class="mt-6 w-full py-3 bg-cyan-500 hover:bg-cyan-600 text-white font-black text-lg rounded-xl shadow-lg shadow-cyan-500/30 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-play"></i> Play Now
+                        </button>
+                    </div>
+
 
                     <!-- Counting Fun Card -->
                     <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 border-2 border-amber-200 dark:border-amber-900 shadow-xl hover:shadow-2xl transition-all bounce-hover flex flex-col justify-between">
@@ -359,7 +479,7 @@
             <div class="bg-gradient-to-b from-yellow-100 to-pink-50 dark:from-slate-800 dark:to-slate-900 p-6 sm:p-10 rounded-3xl border-4 border-pink-200 dark:border-slate-700 shadow-2xl">
                 <div class="text-center mb-8">
                     <h2 class="text-3xl sm:text-4xl font-black text-indigo-950 dark:text-white">
-                        🍎 Fruit Compare 🍓
+                        🍎 More, Less & Equal 🍓
                     </h2>
                     <p class="text-slate-600 dark:text-slate-300 font-medium mt-2">
                         Which symbol correctly compares the two fruit groups?
@@ -367,6 +487,74 @@
                 </div>
 
                 <div id="fruit-compare-2-question" class="text-center"></div>
+            </div>
+        </section>
+
+        <!-- PAGE: FLASH CARD TRAIN GAME -->
+        <section id="page-game-flashcards" class="view-page hidden space-y-6">
+            <div class="flex items-center justify-between gap-3 flex-wrap">
+                <button onclick="navigateTo('home')" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold rounded-xl flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Games
+                </button>
+
+                <div class="flex items-center gap-3 flex-wrap">
+                    <span id="flashcards-progress" class="text-lg font-black text-cyan-600 dark:text-cyan-400 bg-cyan-100 dark:bg-cyan-900/40 px-4 py-1.5 rounded-2xl">
+                        🚂 a / 26
+                    </span>
+                    <span id="flashcards-score" class="text-2xl font-black text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-900/40 px-4 py-1.5 rounded-2xl">
+                        ⭐ 0
+                    </span>
+                    <button onclick="resetFlashCards()" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl shadow-md">
+                        <i class="fa-solid fa-rotate-right"></i> Reset
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-b from-sky-100 via-cyan-50 to-yellow-50 dark:from-slate-800 dark:via-slate-900 dark:to-slate-800 p-4 sm:p-8 rounded-3xl border-4 border-cyan-200 dark:border-slate-700 shadow-2xl overflow-hidden">
+
+                <div class="text-center mb-5">
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-800 dark:text-white">
+                        🚂 Flash Card Train
+                    </h2>
+                    <p id="flashcards-question" class="text-lg sm:text-xl text-slate-600 dark:text-slate-300 font-black mt-2">
+                        Which one starts with a?
+                    </p>
+                    <button type="button" onclick="speakFlashCardQuestion()" class="mt-3 px-5 py-2.5 bg-white dark:bg-slate-700 text-cyan-700 dark:text-cyan-300 font-black rounded-xl shadow-md">
+                        🔊 Hear Question
+                    </button>
+                </div>
+
+                <div class="relative max-w-6xl mx-auto">
+                    <div class="absolute left-0 right-0 bottom-8 h-3 bg-slate-500 dark:bg-slate-600 rounded-full"></div>
+
+                    <div id="flashcard-train" class="relative flex items-end justify-center gap-2 sm:gap-4 pb-5">
+                        <div class="text-7xl sm:text-8xl mb-2">🚂</div>
+                        <div id="flashcard-bogies" class="flex items-end gap-2 sm:gap-4">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="flashcards-feedback" class="min-h-[58px] flex items-center justify-center text-center font-black text-xl mt-3">
+                </div>
+
+                <div class="mt-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-black text-slate-500 dark:text-slate-400">Collected letters</span>
+                        <span id="flashcards-collected-count" class="text-sm font-black text-cyan-600 dark:text-cyan-400">0 / 26</span>
+                    </div>
+                    <div id="flashcards-collected" class="flex flex-wrap gap-2 p-3 bg-white/70 dark:bg-slate-800/70 rounded-2xl min-h-[58px]">
+                    </div>
+                </div>
+
+                <div id="flashcards-complete" class="hidden text-center mt-6 bg-white dark:bg-slate-800 rounded-3xl p-6 border-4 border-yellow-300">
+                    <div class="text-6xl mb-3">🏆🎉🚂</div>
+                    <h3 class="text-3xl font-black text-slate-800 dark:text-white">
+                        Amazing! You completed a–z!
+                    </h3>
+                    <p class="text-slate-500 dark:text-slate-300 font-bold mt-2">
+                        You collected all 26 letter cards!
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -514,6 +702,7 @@
                             <option value="quiz">Multiple Choice Quiz</option>
                             <option value="matching">Word & Picture Match</option>
                             <option value="memory">Memory Flip Cards</option>
+                            <option value="flashcards">Flash Cards</option>
                         </select>
                     </div>
                 </div>
@@ -522,7 +711,7 @@
                 <div class="space-y-4">
                     <div class="flex justify-between items-center">
                         <h3 class="text-xl font-black text-slate-800 dark:text-white">Game Questions / Cards</h3>
-                        <button onclick="addQuestionItem()" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl text-sm flex items-center gap-2">
+                        <button type="button" id="add-question-item-btn" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl text-sm flex items-center gap-2">
                             <i class="fa-solid fa-plus"></i> Add Item
                         </button>
                     </div>
@@ -536,6 +725,42 @@
                     <button onclick="saveManualGame()" class="px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-black text-lg rounded-xl shadow-lg shadow-purple-500/30 bounce-hover">
                         💾 Save & Publish to My Games
                     </button>
+                </div>
+            </div>
+
+            <!-- LIVE GAME PREVIEW -->
+            <div id="manual-live-preview"
+                class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 border-2 border-indigo-100 dark:border-slate-700 shadow-xl space-y-5">
+
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center">👀</span>
+                            <h3 class="text-2xl font-black text-slate-800 dark:text-white">
+                                Live Game Preview
+                            </h3>
+                        </div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 font-medium mt-1">
+                            See how your game will look while you build it.
+                        </p>
+                    </div>
+
+                    <span id="preview-game-type"
+                        class="px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300 text-xs font-black uppercase">
+                        Quiz
+                    </span>
+                </div>
+
+                <div id="manual-preview-content"
+                    class="min-h-[300px] rounded-3xl bg-slate-50 dark:bg-slate-900/60 border-2 border-slate-200 dark:border-slate-700 p-5">
+                    <div class="flex items-center justify-center min-h-[260px] text-center">
+                        <div>
+                            <div class="text-5xl mb-3">🎮</div>
+                            <p class="font-black text-slate-500 dark:text-slate-400">
+                                Start building your game to see a live preview.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1033,102 +1258,874 @@
             });
         }
 
-        // GAME CREATOR SYSTEM
+        // LIVE MANUAL GAME PREVIEW
+        function updateManualLivePreview() {
+            const preview = document.getElementById('manual-preview-content');
+            const typeBadge = document.getElementById('preview-game-type');
+            const titleEl = document.getElementById('creator-title');
+            const typeEl = document.getElementById('creator-type');
+
+            if (!preview) return;
+
+            const title = titleEl?.value?.trim() || 'Untitled Game';
+            const type = typeEl?.value || 'quiz';
+
+            if (typeBadge) {
+                typeBadge.textContent =
+                    type === 'matching' ? 'Matching' :
+                    type === 'memory' ? 'Memory' : 'Quiz';
+            }
+
+            const items = [...document.querySelectorAll('#questions-container .q-item')];
+
+            if (!items.length) {
+                preview.innerHTML = `
+                    <div class="flex items-center justify-center min-h-[260px] text-center">
+                        <div>
+                            <div class="text-5xl mb-3">🎮</div>
+                            <h4 class="text-xl font-black text-slate-700 dark:text-white mb-1">
+                                ${escapeHtmlPreview(title)}
+                            </h4>
+                            <p class="font-medium text-slate-500 dark:text-slate-400">
+                                Add an item to start the preview.
+                            </p>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            if (type === 'matching') {
+                renderLiveMatchingPreview(preview, title, items);
+            } else if (type === 'memory') {
+                renderLiveMemoryPreview(preview, title, items);
+            } else {
+                renderLiveQuizPreview(preview, title, items);
+            }
+        }
+
+        function escapeHtmlPreview(value) {
+            return String(value ?? '').replace(/[&<>"']/g, char => ({
+                '&':'&amp;',
+                '<':'&lt;',
+                '>':'&gt;',
+                '"':'&quot;',
+                "'":'&#039;'
+            }[char]));
+        }
+
+        function renderLiveQuizPreview(preview, title, items) {
+            const item = items[0];
+            const question = item.querySelector('textarea')?.value?.trim() ||
+                item.querySelector('input[type="text"]')?.value?.trim() ||
+                'Your question will appear here';
+
+            const options = [...item.querySelectorAll('input[type="text"]')]
+                .map(input => input.value.trim())
+                .filter(Boolean)
+                .slice(0, 4);
+
+            preview.innerHTML = `
+                <div class="max-w-3xl mx-auto">
+                    <div class="text-center mb-6">
+                        <p class="text-xs font-black uppercase tracking-widest text-indigo-500 mb-2">
+                            ${escapeHtmlPreview(title)}
+                        </p>
+                        <h4 class="text-2xl sm:text-3xl font-black text-slate-800 dark:text-white">
+                            ${escapeHtmlPreview(question)}
+                        </h4>
+                    </div>
+
+                    <div class="grid gap-3">
+                        ${(options.length ? options : ['Option 1','Option 2','Option 3','Option 4']).map((option, i) => `
+                            <button type="button"
+                                class="w-full text-left p-4 rounded-2xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 font-bold text-slate-700 dark:text-slate-200">
+                                <span class="inline-flex w-8 h-8 rounded-lg bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 items-center justify-center mr-3">
+                                    ${String.fromCharCode(65+i)}
+                                </span>
+                                ${escapeHtmlPreview(option)}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderLiveMatchingPreview(preview, title, items) {
+            const pairs = [];
+
+            items.forEach((item, questionIndex) => {
+                item.querySelectorAll('.match-pair').forEach((pair, pairIndex) => {
+                    const leftText = pair.querySelector('.pair-left-text')?.value?.trim() || '';
+                    const rightText = pair.querySelector('.pair-right-text')?.value?.trim() || '';
+
+                    const leftImage = pair.querySelector('.pair-left-image')?.value || '';
+                    const rightImage = pair.querySelector('.pair-right-image')?.value || '';
+
+                    if (leftText || rightText || leftImage || rightImage) {
+                        pairs.push({
+                            leftText,
+                            rightText,
+                            leftImage,
+                            rightImage,
+                            number: pairs.length + 1
+                        });
+                    }
+                });
+            });
+
+            if (!pairs.length) {
+                preview.innerHTML = `
+                    <div class="text-center py-16">
+                        <div class="text-5xl mb-3">🔗</div>
+                        <h4 class="text-xl font-black text-slate-700 dark:text-white">
+                            ${escapeHtmlPreview(title)}
+                        </h4>
+                        <p class="text-slate-500 dark:text-slate-400 mt-2">
+                            Add matching pairs to preview them here.
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+
+            preview.innerHTML = `
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-6">
+                        <p class="text-xs font-black uppercase tracking-widest text-indigo-500 mb-2">
+                            ${escapeHtmlPreview(title)}
+                        </p>
+                        <h4 class="text-2xl font-black text-slate-800 dark:text-white">
+                            Match the correct pairs
+                        </h4>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 sm:gap-6">
+                        <div class="space-y-3">
+                            <p class="text-xs font-black uppercase tracking-wider text-slate-500 text-center">
+                                Left
+                            </p>
+                            ${pairs.map((pair, i) => livePreviewCard(pair.leftText, pair.leftImage, i+1)).join('')}
+                        </div>
+
+                        <div class="space-y-3">
+                            <p class="text-xs font-black uppercase tracking-wider text-slate-500 text-center">
+                                Right
+                            </p>
+                            ${pairs.map((pair, i) => livePreviewCard(pair.rightText, pair.rightImage, i+1)).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function livePreviewCard(text, image, number) {
+            return `
+                <button type="button"
+                    class="w-full min-h-[82px] p-3 rounded-2xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 flex items-center gap-3 text-left">
+                    ${image ? `
+                        <img src="${escapeHtmlPreview(image)}"
+                            class="w-14 h-14 rounded-xl object-cover border border-slate-200 dark:border-slate-700"
+                            alt="">
+                    ` : `
+                        <span class="w-10 h-10 shrink-0 rounded-xl bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 flex items-center justify-center font-black">
+                            ${number}
+                        </span>
+                    `}
+                    <span class="font-bold text-slate-700 dark:text-slate-200 break-words">
+                        ${escapeHtmlPreview(text || 'Image / text')}
+                    </span>
+                </button>
+            `;
+        }
+
+        function renderLiveMemoryPreview(preview, title, items) {
+            const cards = [];
+
+            items.forEach((item, index) => {
+                const text = item.querySelector('textarea')?.value?.trim() ||
+                    item.querySelector('input[type="text"]')?.value?.trim() ||
+                    `Card ${index + 1}`;
+
+                if (text) cards.push(text);
+            });
+
+            preview.innerHTML = `
+                <div class="max-w-3xl mx-auto text-center">
+                    <p class="text-xs font-black uppercase tracking-widest text-indigo-500 mb-2">
+                        ${escapeHtmlPreview(title)}
+                    </p>
+                    <h4 class="text-2xl font-black text-slate-800 dark:text-white mb-6">
+                        Memory Game
+                    </h4>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        ${(cards.length ? cards : ['Card 1','Card 2','Card 3','Card 4']).map((card, i) => `
+                            <button type="button"
+                                class="aspect-square rounded-2xl bg-indigo-600 text-white text-3xl font-black shadow-lg">
+                                ?
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function initManualLivePreview() {
+            const creator = document.getElementById('creator-manual-panel');
+            if (!creator) return;
+
+            creator.addEventListener('input', () => {
+                updateManualLivePreview();
+            });
+
+            creator.addEventListener('change', () => {
+                updateManualLivePreview();
+            });
+
+            const observer = new MutationObserver(() => {
+                updateManualLivePreview();
+            });
+
+            const questions = document.getElementById('questions-container');
+            if (questions) {
+                observer.observe(questions, {
+                    childList: true,
+                    subtree: true
+                });
+            }
+
+            updateManualLivePreview();
+        }
+
+        document.addEventListener('DOMContentLoaded', initManualLivePreview);
+
+        
+/* ADVANCED IMAGE CONTROLS */
+(function () {
+    function refreshImageControl(fileInput) {
+        if (!fileInput) return;
+
+        const control = fileInput.closest('.match-image-control');
+        if (!control) return;
+
+        const previewBox = control.querySelector('.match-image-preview-box');
+        const hiddenInput = control.querySelector('input[type="hidden"]');
+
+        if (!previewBox || !hiddenInput) return;
+
+        const file = fileInput.files && fileInput.files[0];
+
+        if (!file) return;
+
+        if (!file.type || !file.type.startsWith('image/')) {
+            fileInput.value = '';
+            alert('Please select an image file.');
+            return;
+        }
+
+        if (file.size > 8 * 1024 * 1024) {
+            fileInput.value = '';
+            alert('Image is too large. Please use an image under 8 MB.');
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+            const result = event.target.result;
+
+            hiddenInput.value = result;
+
+            previewBox.innerHTML =
+                '<img src="' + result.replace(/"/g, '&quot;') + '" alt="Uploaded image">';
+
+            if (typeof updateManualLivePreview === 'function') {
+                updateManualLivePreview();
+            }
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+    function removeImage(button) {
+        const control = button.closest('.match-image-control');
+        if (!control) return;
+
+        const fileInput = control.querySelector('.match-image-file');
+        const hiddenInput = control.querySelector('input[type="hidden"]');
+        const previewBox = control.querySelector('.match-image-preview-box');
+
+        if (fileInput) fileInput.value = '';
+        if (hiddenInput) hiddenInput.value = '';
+
+        if (previewBox) {
+            previewBox.innerHTML =
+                '<div class="match-image-empty">No image selected</div>';
+        }
+
+        if (typeof updateManualLivePreview === 'function') {
+            updateManualLivePreview();
+        }
+    }
+
+    function initImageControls(root) {
+        root = root || document;
+
+        root.querySelectorAll('.match-image-file').forEach(function (input) {
+            if (input.dataset.imageControlReady === '1') return;
+
+            input.dataset.imageControlReady = '1';
+
+            input.addEventListener('change', function () {
+                refreshImageControl(input);
+            });
+        });
+
+        root.querySelectorAll('.match-image-remove').forEach(function (button) {
+            if (button.dataset.imageRemoveReady === '1') return;
+
+            button.dataset.imageRemoveReady = '1';
+
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+                removeImage(button);
+            });
+        });
+    }
+
+    window.initAdvancedImageControls = initImageControls;
+
+    document.addEventListener('DOMContentLoaded', function () {
+        initImageControls(document);
+    });
+
+    const observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+            mutation.addedNodes.forEach(function (node) {
+                if (node.nodeType === 1) {
+                    initImageControls(node);
+                }
+            });
+        });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+})();
+
+// GAME CREATOR SYSTEM
         function switchCreatorTab(tab) {
             AudioEngine.playPop();
             const manualBtn = document.getElementById('tab-btn-manual');
             const aiBtn = document.getElementById('tab-btn-ai');
             const manualPanel = document.getElementById('creator-manual-panel');
             const aiPanel = document.getElementById('creator-ai-panel');
+            const livePreview = document.getElementById('manual-live-preview');
 
             if (tab === 'manual') {
                 manualBtn.className = "flex-1 py-3 font-black rounded-xl transition-all bg-white dark:bg-slate-800 text-purple-600 shadow-md";
                 aiBtn.className = "flex-1 py-3 font-black rounded-xl transition-all text-slate-600 dark:text-slate-300";
                 manualPanel.classList.remove('hidden');
                 aiPanel.classList.add('hidden');
+                if (livePreview) livePreview.classList.remove('hidden');
+                if (typeof updateManualLivePreview === 'function') updateManualLivePreview();
             } else {
                 aiBtn.className = "flex-1 py-3 font-black rounded-xl transition-all bg-white dark:bg-slate-800 text-purple-600 shadow-md";
                 manualBtn.className = "flex-1 py-3 font-black rounded-xl transition-all text-slate-600 dark:text-slate-300";
                 aiPanel.classList.remove('hidden');
                 manualPanel.classList.add('hidden');
+                if (livePreview) livePreview.classList.add('hidden');
             }
         }
 
         function resetCreatorForm() {
             document.getElementById('creator-edit-id').value = '';
             document.getElementById('creator-title').value = '';
-            document.getElementById('questions-container').innerHTML = '';
+            const container = document.getElementById('questions-container');
+            container.innerHTML = '';
+
             addQuestionItem();
             addQuestionItem();
+
+            refreshQuestionNumbers();
+            updateQuestionEditorVisibility();
+
+            if (typeof updateManualLivePreview === 'function') {
+                updateManualLivePreview();
+            }
         }
 
         function addQuestionItem(questionData = null) {
             const container = document.getElementById('questions-container');
             const idx = container.children.length + 1;
             const div = document.createElement('div');
-            div.className = "q-item p-4 bg-slate-50 dark:bg-slate-700/50 rounded-2xl border-2 border-slate-200 dark:border-slate-600 space-y-3 relative";
-            
-            const qVal = questionData ? questionData.q : '';
-            const c0 = questionData && questionData.choices ? questionData.choices[0] : '';
-            const c1 = questionData && questionData.choices ? questionData.choices[1] : '';
-            const c2 = questionData && questionData.choices ? questionData.choices[2] : '';
-            const ans = questionData ? questionData.answer : '';
+
+            div.className = "q-item p-5 bg-slate-50 dark:bg-slate-700/50 rounded-2xl border-2 border-slate-200 dark:border-slate-600 space-y-4 relative shadow-sm";
+
+            const qVal = questionData?.q || '';
+            const choices = questionData?.choices || ['', '', ''];
+            const ans = questionData?.answer || '';
+            const pairs = questionData?.pairs || [];
 
             div.innerHTML = `
-                <div class="flex justify-between items-center">
-                    <span class="font-black text-xs text-purple-600 uppercase">Item / Question #${idx}</span>
-                    <button type="button" onclick="this.parentElement.parentElement.remove()" class="text-xs text-red-500 font-bold hover:underline">Remove</button>
+                <div class="flex justify-between items-center gap-3">
+                    <div class="flex items-center gap-2">
+                        <span class="question-number w-8 h-8 flex items-center justify-center rounded-xl bg-purple-600 text-white font-black text-xs">${idx}</span>
+                        <span class="font-black text-sm text-purple-600 uppercase">Question / Item</span>
+                    </div>
+
+                    <button type="button"
+                        onclick="this.closest('.q-item').remove(); refreshQuestionNumbers();"
+                        class="px-3 py-1.5 rounded-xl bg-red-50 text-red-500 font-black text-xs hover:bg-red-100">
+                        🗑 Remove
+                    </button>
                 </div>
-                <input type="text" class="input-q w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-800 dark:text-white font-bold text-sm" placeholder="Question Text (e.g., What color is the sun?)" value="${qVal}">
-                <div class="grid grid-cols-3 gap-2">
-                    <input type="text" class="input-c0 px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-800 dark:text-white text-xs font-bold" placeholder="Option A" value="${c0}">
-                    <input type="text" class="input-c1 px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-800 dark:text-white text-xs font-bold" placeholder="Option B" value="${c1}">
-                    <input type="text" class="input-c2 px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-800 dark:text-white text-xs font-bold" placeholder="Option C" value="${c2}">
+
+                <input type="text"
+                    class="input-q w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-800 dark:text-white font-bold text-sm"
+                    placeholder="Question / instruction..."
+                    value="${escapeHtmlAttr(qVal)}">
+
+                <div class="creator-type-note text-xs font-bold text-slate-500">
+                    Choose your game type above. Matching games can contain multiple image pairs in one question.
                 </div>
-                <input type="text" class="input-ans w-full px-3 py-2 rounded-xl border border-emerald-300 dark:border-emerald-600 bg-emerald-50 dark:bg-slate-800 text-emerald-800 dark:text-emerald-300 font-bold text-xs" placeholder="Correct Answer (must match one Option exactly)" value="${ans}">
+
+                <div class="quiz-editor">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        ${[0,1,2].map(i => `
+                            <input type="text"
+                                class="input-c${i} px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-800 dark:text-white text-sm font-bold"
+                                placeholder="Option ${String.fromCharCode(65+i)}"
+                                value="${escapeHtmlAttr(choices[i] || '')}">
+                        `).join('')}
+                    </div>
+
+                    <input type="text"
+                        class="input-ans w-full px-4 py-3 rounded-xl border-2 border-emerald-200 dark:border-emerald-700 bg-emerald-50 dark:bg-slate-800 text-emerald-800 dark:text-emerald-300 font-bold text-sm"
+                        placeholder="Correct answer (must exactly match an option)"
+                        value="${escapeHtmlAttr(ans)}">
+                </div>
+
+                <div class="matching-editor hidden space-y-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                            <h4 class="font-black text-slate-800 dark:text-white">🧩 Matching Pairs</h4>
+                            <p class="text-xs text-slate-500 font-medium">Add as many image/text pairs as you want.</p>
+                        </div>
+
+                        <button type="button"
+                            class="add-pair-btn px-4 py-2 bg-purple-600 text-white rounded-xl font-black text-xs shadow hover:bg-purple-700">
+                            ➕ Add Pair
+                        </button>
+                    </div>
+
+                    <div class="pair-list space-y-3"></div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <label class="flex items-center gap-2 px-3 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 cursor-pointer">
+                            <input type="checkbox" class="matching-shuffle" ${questionData?.shuffle ? 'checked' : ''}>
+                            <span class="text-xs font-black text-slate-700 dark:text-slate-200">🔀 Shuffle</span>
+                        </label>
+
+                        <label class="flex items-center gap-2 px-3 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 cursor-pointer">
+                            <span class="text-xs font-black text-slate-700 dark:text-slate-200">⭐ Points</span>
+                            <input type="number" min="1" class="matching-points w-20 px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 font-bold" value="${questionData?.points || 100}">
+                        </label>
+
+                        <label class="flex items-center gap-2 px-3 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 cursor-pointer">
+                            <span class="text-xs font-black text-slate-700 dark:text-slate-200">⏱ Seconds</span>
+                            <input type="number" min="0" class="matching-time w-20 px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 font-bold" value="${questionData?.timeLimit || 0}">
+                        </label>
+                    </div>
+                </div>
             `;
+
             container.appendChild(div);
+
+            const pairList = div.querySelector('.pair-list');
+            const addPairBtn = div.querySelector('.add-pair-btn');
+
+            function addPair(pairData = null) {
+                const pair = document.createElement('div');
+
+                pair.className = "match-pair bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-600 rounded-2xl p-4";
+
+                const left = pairData?.left || {};
+                const right = pairData?.right || {};
+
+                pair.innerHTML = `
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="pair-number font-black text-xs text-purple-600">
+                            PAIR #${pairList.children.length + 1}
+                        </span>
+
+                        <button type="button"
+                            class="remove-pair text-red-500 font-black text-xs hover:underline">
+                            Remove Pair
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                        <div class="rounded-2xl border-2 border-dashed border-purple-200 dark:border-slate-600 p-3 space-y-3">
+                            <div class="text-xs font-black text-purple-600 uppercase">LEFT</div>
+
+                            <input type="text"
+                                class="pair-left-text w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 font-bold text-sm"
+                                placeholder="Left text (optional)"
+                                value="${escapeHtmlAttr(left.text || '')}">
+
+                            <input type="file"
+                                accept="image/*"
+                                class="pair-left-file w-full text-xs font-bold text-slate-500">
+
+                            <input type="hidden"
+                                class="pair-left-image"
+                                value="${escapeHtmlAttr(left.image || '')}">
+
+                            <div class="pair-left-preview min-h-[110px] rounded-xl bg-slate-100 dark:bg-slate-700 flex items-center justify-center overflow-hidden">
+                                ${left.image
+                                    ? `<img src="${escapeHtmlAttr(left.image)}" class="max-h-32 max-w-full object-contain rounded-lg">`
+                                    : `<span class="text-xs text-slate-400 font-bold">No image selected</span>`}
+                            </div>
+                        </div>
+
+                        <div class="rounded-2xl border-2 border-dashed border-emerald-200 dark:border-slate-600 p-3 space-y-3">
+                            <div class="text-xs font-black text-emerald-600 uppercase">RIGHT</div>
+
+                            <input type="text"
+                                class="pair-right-text w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 font-bold text-sm"
+                                placeholder="Right text (optional)"
+                                value="${escapeHtmlAttr(right.text || '')}">
+
+                            <input type="file"
+                                accept="image/*"
+                                class="pair-right-file w-full text-xs font-bold text-slate-500">
+
+                            <input type="hidden"
+                                class="pair-right-image"
+                                value="${escapeHtmlAttr(right.image || '')}">
+
+                            <div class="pair-right-preview min-h-[110px] rounded-xl bg-slate-100 dark:bg-slate-700 flex items-center justify-center overflow-hidden">
+                                ${right.image
+                                    ? `<img src="${escapeHtmlAttr(right.image)}" class="max-h-32 max-w-full object-contain rounded-lg">`
+                                    : `<span class="text-xs text-slate-400 font-bold">No image selected</span>`}
+                            </div>
+                        </div>
+
+                    </div>
+                `;
+
+                pairList.appendChild(pair);
+
+                // Every pair keeps track of image reads that are still running.
+                pair._pendingImageReads = [];
+
+                function loadImage(fileInput, hiddenInput, preview) {
+                    fileInput.addEventListener('change', () => {
+                        const file = fileInput.files?.[0];
+
+                        if (!file) return;
+
+                        if (!file.type.startsWith('image/')) {
+                            Swal.fire(
+                                'Invalid Image',
+                                'Please choose an image file.',
+                                'warning'
+                            );
+                            fileInput.value = '';
+                            return;
+                        }
+
+                        const promise = new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+
+                            reader.onload = e => {
+                                const result = e.target.result;
+
+                                hiddenInput.value = result;
+
+                                preview.innerHTML = `
+                                    <img src="${result}"
+                                        class="max-h-32 max-w-full object-contain rounded-lg">
+                                `;
+
+                                // Update the live game preview immediately after image upload.
+                                if (typeof updateManualLivePreview === 'function') {
+                                    updateManualLivePreview();
+                                }
+
+                                resolve(result);
+                            };
+
+                            reader.onerror = () => {
+                                reject(new Error('Unable to read image file.'));
+                            };
+
+                            reader.readAsDataURL(file);
+                        });
+
+                        pair._pendingImageReads.push(promise);
+
+                        // Remove completed promise from the queue.
+                        promise.finally(() => {
+                            pair._pendingImageReads =
+                                pair._pendingImageReads.filter(p => p !== promise);
+                        });
+                    });
+                }
+
+                loadImage(
+                    pair.querySelector('.pair-left-file'),
+                    pair.querySelector('.pair-left-image'),
+                    pair.querySelector('.pair-left-preview')
+                );
+
+                loadImage(
+                    pair.querySelector('.pair-right-file'),
+                    pair.querySelector('.pair-right-image'),
+                    pair.querySelector('.pair-right-preview')
+                );
+
+                pair.querySelector('.remove-pair').onclick = () => {
+                    pair.remove();
+                    refreshPairNumbers(pairList);
+                };
+            }
+
+            addPairBtn.onclick = function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                addPair();
+                refreshPairNumbers(pairList);
+                updateManualLivePreview();
+            };
+
+            function refreshPairNumbers(list) {
+                [...list.children].forEach((el, i) => {
+                    const n = el.querySelector('.pair-number');
+                    if (n) n.textContent = `PAIR #${i + 1}`;
+                });
+            }
+
+            if (pairs.length) {
+                pairs.forEach(addPair);
+            } else {
+                addPair();
+            }
+
+            div._addMatchingPair = addPair;
+
+            updateQuestionEditorVisibility();
         }
 
-        function saveManualGame() {
+        function refreshQuestionNumbers() {
+            document.querySelectorAll('#questions-container .q-item').forEach((el, i) => {
+                const n = el.querySelector('.question-number');
+                if (n) n.textContent = i + 1;
+            });
+        }
+
+        function escapeHtmlAttr(value) {
+            return String(value ?? '')
+                .replace(/&/g, '&amp;')
+                .replace(/"/g, '&quot;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+        }
+
+        function updateQuestionEditorVisibility() {
+            const type = document.getElementById('creator-type')?.value || 'quiz';
+
+            document.querySelectorAll('#questions-container .q-item').forEach(item => {
+                const quiz = item.querySelector('.quiz-editor');
+                const matching = item.querySelector('.matching-editor');
+
+                if (!quiz || !matching) return;
+
+                if (type === 'matching') {
+                    quiz.classList.add('hidden');
+                    matching.classList.remove('hidden');
+                } else {
+                    quiz.classList.remove('hidden');
+                    matching.classList.add('hidden');
+                }
+            });
+        }
+
+        document.getElementById('creator-type')?.addEventListener('change', updateQuestionEditorVisibility);
+
+        document.getElementById('add-question-item-btn')?.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            addQuestionItem();
+            refreshQuestionNumbers();
+            updateQuestionEditorVisibility();
+
+            if (typeof updateManualLivePreview === 'function') {
+                updateManualLivePreview();
+            }
+        });
+
+        async function saveManualGame() {
             const editId = document.getElementById('creator-edit-id').value;
             const title = document.getElementById('creator-title').value.trim();
             const type = document.getElementById('creator-type').value;
-            
+
             if (!title) {
                 Swal.fire('Missing Title', 'Please enter a title for your game.', 'warning');
                 return;
             }
 
-            const qElements = document.querySelectorAll('.q-item');
+            // Wait for every image currently being converted to a data URL.
+            const pendingReads = [];
+
+            document.querySelectorAll('#questions-container .q-item').forEach(qItem => {
+                qItem.querySelectorAll('.match-pair').forEach(pair => {
+                    if (Array.isArray(pair._pendingImageReads)) {
+                        pendingReads.push(...pair._pendingImageReads);
+                    }
+                });
+            });
+
+            if (pendingReads.length) {
+                Swal.fire({
+                    title: 'Processing Images...',
+                    text: 'Please wait while your uploaded images are prepared.',
+                    allowOutsideClick: false,
+                    didOpen: () => Swal.showLoading()
+                });
+
+                try {
+                    await Promise.all(pendingReads);
+                } catch (error) {
+                    Swal.close();
+                    Swal.fire(
+                        'Image Error',
+                        'One or more images could not be processed. Please upload them again.',
+                        'error'
+                    );
+                    return;
+                }
+
+                Swal.close();
+            }
+
+            const qElements = document.querySelectorAll('#questions-container .q-item');
             const questions = [];
 
-            qElements.forEach(el => {
-                const q = el.querySelector('.input-q').value.trim();
-                const c0 = el.querySelector('.input-c0').value.trim();
-                const c1 = el.querySelector('.input-c1').value.trim();
-                const c2 = el.querySelector('.input-c2').value.trim();
-                const answer = el.querySelector('.input-ans').value.trim();
+            qElements.forEach((el) => {
+                const q = el.querySelector('.input-q')?.value.trim() || '';
 
-                if (q && answer) {
-                    questions.push({
-                        q,
-                        choices: [c0, c1, c2].filter(c => c !== ''),
-                        answer
+                if (type === 'matching') {
+                    const pairElements = el.querySelectorAll('.match-pair');
+                    const pairs = [];
+
+                    pairElements.forEach(pair => {
+                        const leftText =
+                            pair.querySelector('.pair-left-text')?.value.trim() || '';
+
+                        const leftImage =
+                            pair.querySelector('.pair-left-image')?.value || '';
+
+                        const rightText =
+                            pair.querySelector('.pair-right-text')?.value.trim() || '';
+
+                        const rightImage =
+                            pair.querySelector('.pair-right-image')?.value || '';
+
+                        // Save EVERY non-empty pair.
+                        if (leftText || leftImage || rightText || rightImage) {
+                            pairs.push({
+                                left: {
+                                    text: leftText,
+                                    image: leftImage
+                                },
+                                right: {
+                                    text: rightText,
+                                    image: rightImage
+                                }
+                            });
+                        }
                     });
+
+                    const shuffle =
+                        !!el.querySelector('.matching-shuffle')?.checked;
+
+                    const points = Math.max(
+                        1,
+                        parseInt(
+                            el.querySelector('.matching-points')?.value || '100',
+                            10
+                        )
+                    );
+
+                    const timeLimit = Math.max(
+                        0,
+                        parseInt(
+                            el.querySelector('.matching-time')?.value || '0',
+                            10
+                        )
+                    );
+
+                    if (q && pairs.length > 0) {
+                        questions.push({
+                            q,
+                            type: 'matching',
+                            pairs,
+                            shuffle,
+                            points,
+                            timeLimit
+                        });
+                    }
+                } else {
+                    const c0 =
+                        el.querySelector('.input-c0')?.value.trim() || '';
+
+                    const c1 =
+                        el.querySelector('.input-c1')?.value.trim() || '';
+
+                    const c2 =
+                        el.querySelector('.input-c2')?.value.trim() || '';
+
+                    const answer =
+                        el.querySelector('.input-ans')?.value.trim() || '';
+
+                    if (q && answer) {
+                        questions.push({
+                            q,
+                            choices: [c0, c1, c2].filter(c => c !== ''),
+                            answer
+                        });
+                    }
                 }
             });
 
             if (questions.length === 0) {
-                Swal.fire('Missing Questions', 'Please add at least 1 valid question with correct answer.', 'warning');
+                if (type === 'matching') {
+                    Swal.fire(
+                        'Missing Matching Data',
+                        'Please add at least 1 question with at least 1 matching pair.',
+                        'warning'
+                    );
+                } else {
+                    Swal.fire(
+                        'Missing Questions',
+                        'Please add at least 1 valid question with correct answer.',
+                        'warning'
+                    );
+                }
                 return;
             }
 
-            const activeUserId = STATE.currentUser ? STATE.currentUser.id : 'guest_101';
-            const activeUserName = STATE.currentUser ? STATE.currentUser.name : 'Guest Explorer';
+            const activeUserId =
+                STATE.currentUser ? STATE.currentUser.id : 'guest_101';
+
+            const activeUserName =
+                STATE.currentUser ? STATE.currentUser.name : 'Guest Explorer';
 
             if (editId) {
-                // Update Existing — only the current user's game
                 const gameIdx = STATE.games.findIndex(
                     g => g.id === editId && g.creatorId === activeUserId
                 );
@@ -1142,36 +2139,63 @@
                     return;
                 }
 
-                STATE.games[gameIdx].title = title;
-                STATE.games[gameIdx].type = type;
-                STATE.games[gameIdx].questions = questions;
+                STATE.games[gameIdx] = {
+                    ...STATE.games[gameIdx],
+                    title,
+                    type,
+                    questions,
+                    updatedAt: new Date().toISOString()
+                };
             } else {
-                // Save New Game
-                const newGame = {
+                STATE.games.push({
                     id: 'game_' + Date.now(),
                     creatorId: activeUserId,
                     creatorName: activeUserName,
-                    title: title,
-                    type: type,
+                    title,
+                    type,
                     createdAt: new Date().toISOString().split('T')[0],
-                    questions: questions
-                };
-                STATE.games.unshift(newGame);
+                    questions
+                });
             }
 
-            localStorage.setItem('eduboo_custom_games', JSON.stringify(STATE.games));
-            AudioEngine.playFanfare();
-            confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
+            try {
+                localStorage.setItem(
+                    'eduboo_custom_games',
+                    JSON.stringify(STATE.games)
+                );
+            } catch (error) {
+                console.error('Failed to save game:', error);
 
-            Swal.fire({
-                title: 'Game Published! 🚀',
-                text: 'Your game is now available in your My Games tab.',
+                Swal.fire(
+                    'Storage Error',
+                    'The images are too large for browser storage. Please use smaller images.',
+                    'error'
+                );
+                return;
+            }
+
+            if (typeof AudioEngine !== 'undefined' && AudioEngine.playFanfare) {
+                AudioEngine.playFanfare();
+            }
+
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 120,
+                    spread: 80,
+                    origin: { y: 0.6 }
+                });
+            }
+
+            await Swal.fire({
                 icon: 'success',
-                timer: 1800,
-                showConfirmButton: false
+                title: 'Game Published!',
+                text: `${questions.length} question${questions.length === 1 ? '' : 's'} saved successfully.`,
+                confirmButtonColor: '#7c3aed'
             });
 
-            navigateTo('my-games');
+            if (typeof showPage === 'function') {
+                showPage('my-games');
+            }
         }
 
         function editCustomGame(gameId) {
@@ -1329,16 +2353,18 @@
             const game = STATE.activeCustomGame;
 
             if (!game.questions || STATE.customGameQuestionIdx >= game.questions.length) {
-                // Game Finished
                 AudioEngine.playFanfare();
                 confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
-                
+
                 container.innerHTML = `
                     <div class="text-center space-y-4">
                         <div class="text-6xl">🎉 🎉 🎉</div>
                         <h3 class="text-3xl font-black text-slate-800 dark:text-white">Game Completed!</h3>
-                        <p class="text-xl font-bold text-purple-600">Final Score: ${STATE.customGameScore} Points</p>
-                        <button onclick="navigateTo('my-games')" class="px-8 py-3 bg-purple-600 text-white font-black rounded-2xl shadow-lg bounce-hover">
+                        <p class="text-xl font-bold text-purple-600">
+                            Final Score: ${STATE.customGameScore} Points
+                        </p>
+                        <button onclick="navigateTo('my-games')"
+                            class="px-8 py-3 bg-purple-600 text-white font-black rounded-2xl shadow-lg bounce-hover">
                             Back to My Games
                         </button>
                     </div>
@@ -1347,21 +2373,337 @@
             }
 
             const currQ = game.questions[STATE.customGameQuestionIdx];
+
+            if (game.type === 'matching' || currQ.type === 'matching' || currQ.pairs) {
+                renderCustomMatchingQuestion(currQ);
+                return;
+            }
+
             container.innerHTML = `
                 <div class="w-full space-y-6">
                     <div class="flex justify-between text-xs font-black text-slate-400">
                         <span>QUESTION ${STATE.customGameQuestionIdx + 1} OF ${game.questions.length}</span>
                     </div>
-                    <h3 class="text-2xl font-black text-slate-800 dark:text-white text-center">${currQ.q}</h3>
-                    <div class="grid grid-cols-1 gap-3 max-w-md mx-auto">
-                        ${currQ.choices.map(c => `
-                            <button onclick="submitCustomAnswer('${c.replace(/'/g, "\\'")}', '${currQ.answer.replace(/'/g, "\\'")}')" class="w-full py-3.5 px-4 bg-slate-100 dark:bg-slate-700 hover:bg-purple-500 hover:text-white dark:hover:bg-purple-600 text-slate-800 dark:text-white font-bold text-lg rounded-2xl border-2 border-slate-200 dark:border-slate-600 transition-all bounce-hover">
-                                ${c}
+
+                    <h3 class="text-2xl font-black text-slate-800 dark:text-white text-center">
+                        ${escapeHtml(currQ.q)}
+                    </h3>
+
+                    <div id="custom-answer-options" class="grid grid-cols-1 gap-3 max-w-md mx-auto">
+                        ${(currQ.choices || []).map((c, i) => `
+                            <button
+                                type="button"
+                                class="custom-answer-btn w-full py-3.5 px-4 bg-slate-100 dark:bg-slate-700 hover:bg-purple-500 hover:text-white dark:hover:bg-purple-600 text-slate-800 dark:text-white font-bold text-lg rounded-2xl border-2 border-slate-200 dark:border-slate-600 transition-all bounce-hover"
+                                data-answer-index="${i}">
+                                ${escapeHtml(c)}
                             </button>
                         `).join('')}
                     </div>
                 </div>
             `;
+
+            const answerButtons = container.querySelectorAll('.custom-answer-btn');
+
+            answerButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    const choices = Array.isArray(currQ.choices) ? currQ.choices : [];
+                    const selectedAnswer = choices[index] ?? '';
+                    submitCustomAnswer(selectedAnswer, currQ.answer);
+                });
+            });
+        }
+
+        let customMatchingState = null;
+
+        function renderCustomMatchingQuestion(currQ) {
+            const container = document.getElementById('custom-game-body');
+
+            let pairs = Array.isArray(currQ.pairs) ? currQ.pairs : [];
+
+            if (!pairs.length) {
+                container.innerHTML = `
+                    <div class="text-center text-red-500 font-black">
+                        This matching question has no pairs.
+                    </div>
+                `;
+                return;
+            }
+
+            const originalPairs = pairs.map((pair, index) => ({
+                id: 'pair_' + index + '_' + Math.random().toString(36).slice(2),
+                left: pair.left || {},
+                right: pair.right || {}
+            }));
+
+            let leftItems = [...originalPairs];
+            let rightItems = [...originalPairs];
+
+            if (currQ.shuffle) {
+                leftItems.sort(() => Math.random() - 0.5);
+                rightItems.sort(() => Math.random() - 0.5);
+            }
+
+            customMatchingState = {
+                pairs: originalPairs,
+                selectedLeft: null,
+                matched: new Set(),
+                points: Number(currQ.points) || 100,
+                startedAt: Date.now(),
+                timeLimit: Number(currQ.timeLimit) || 0
+            };
+
+            container.innerHTML = `
+                <div class="w-full space-y-5">
+
+                    <div class="flex flex-col sm:flex-row justify-between gap-3">
+                        <div>
+                            <div class="text-xs font-black text-slate-400">
+                                QUESTION ${STATE.customGameQuestionIdx + 1} OF ${STATE.activeCustomGame.questions.length}
+                            </div>
+                            <h3 class="text-2xl font-black text-slate-800 dark:text-white mt-1">
+                                ${escapeHtml(currQ.q || 'Match the correct pairs')}
+                            </h3>
+                        </div>
+
+                        <div class="flex gap-2">
+                            <span class="px-3 py-2 rounded-xl bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-black">
+                                ⭐ ${customMatchingState.points} pts
+                            </span>
+
+                            ${customMatchingState.timeLimit > 0 ? `
+                                <span id="matching-timer"
+                                    class="px-3 py-2 rounded-xl bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-xs font-black">
+                                    ⏱ ${customMatchingState.timeLimit}s
+                                </span>
+                            ` : ''}
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <div class="text-center mb-2 text-xs font-black text-purple-600 uppercase">
+                                Match These
+                            </div>
+
+                            <div id="matching-left-column" class="space-y-3">
+                                ${leftItems.map(item => matchingCardHTML(item, 'left')).join('')}
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="text-center mb-2 text-xs font-black text-emerald-600 uppercase">
+                                With These
+                            </div>
+
+                            <div id="matching-right-column" class="space-y-3">
+                                ${rightItems.map(item => matchingCardHTML(item, 'right')).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="matching-status"
+                        class="text-center text-sm font-black text-slate-500 dark:text-slate-400">
+                        Select an item from the left, then select its matching item on the right.
+                    </div>
+                </div>
+            `;
+
+            if (customMatchingState.timeLimit > 0) {
+                startMatchingTimer(customMatchingState.timeLimit);
+            }
+        }
+
+        function matchingCardHTML(item, side) {
+            const data = side === 'left' ? item.left : item.right;
+
+            return `
+                <button
+                    type="button"
+                    data-match-id="${item.id}"
+                    data-match-side="${side}"
+                    onclick="selectMatchingItem('${item.id}', '${side}')"
+                    class="matching-card w-full min-h-[120px] p-3 rounded-2xl border-2 border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 hover:border-purple-400 hover:shadow-lg transition-all flex flex-col items-center justify-center gap-2">
+
+                    ${data.image ? `
+                        <img src="${data.image}"
+                            class="max-h-24 max-w-full object-contain rounded-xl pointer-events-none"
+                            alt="">
+                    ` : ''}
+
+                    ${data.text ? `
+                        <span class="text-sm font-black text-slate-800 dark:text-white">
+                            ${escapeHtml(data.text)}
+                        </span>
+                    ` : ''}
+                </button>
+            `;
+        }
+
+        function selectMatchingItem(id, side) {
+            if (!customMatchingState) return;
+
+            const state = customMatchingState;
+
+            if (state.matched.has(id)) return;
+
+            if (side === 'left') {
+                state.selectedLeft = id;
+
+                document.querySelectorAll('.matching-card[data-match-side="left"]').forEach(card => {
+                    card.classList.remove('ring-4', 'ring-purple-400', 'border-purple-500');
+                });
+
+                const selected = document.querySelector(
+                    `.matching-card[data-match-id="${CSS.escape(id)}"][data-match-side="left"]`
+                );
+
+                if (selected) {
+                    selected.classList.add('ring-4', 'ring-purple-400', 'border-purple-500');
+                }
+
+                return;
+            }
+
+            if (!state.selectedLeft) {
+                setMatchingStatus('First select an item from the left.', false);
+                return;
+            }
+
+            const leftId = state.selectedLeft;
+
+            if (leftId === id) {
+                state.matched.add(id);
+
+                const leftCard = document.querySelector(
+                    `.matching-card[data-match-id="${CSS.escape(id)}"][data-match-side="left"]`
+                );
+
+                const rightCard = document.querySelector(
+                    `.matching-card[data-match-id="${CSS.escape(id)}"][data-match-side="right"]`
+                );
+
+                [leftCard, rightCard].forEach(card => {
+                    if (card) {
+                        card.classList.remove(
+                            'ring-4',
+                            'ring-purple-400',
+                            'border-purple-500'
+                        );
+                        card.classList.add(
+                            'border-emerald-500',
+                            'bg-emerald-50',
+                            'dark:bg-emerald-900/20'
+                        );
+                        card.disabled = true;
+                    }
+                });
+
+                state.selectedLeft = null;
+
+                AudioEngine.playPop();
+                setMatchingStatus('✅ Correct match!', true);
+
+                if (state.matched.size === state.pairs.length) {
+                    finishMatchingQuestion();
+                }
+            } else {
+                const wrongLeft = document.querySelector(
+                    `.matching-card[data-match-id="${CSS.escape(leftId)}"][data-match-side="left"]`
+                );
+
+                const wrongRight = document.querySelector(
+                    `.matching-card[data-match-id="${CSS.escape(id)}"][data-match-side="right"]`
+                );
+
+                [wrongLeft, wrongRight].forEach(card => {
+                    if (card) {
+                        card.classList.add('border-red-500');
+                        setTimeout(() => card.classList.remove('border-red-500'), 450);
+                    }
+                });
+
+                setMatchingStatus('❌ Not a match — try again!', false);
+                AudioEngine.speak('Try again!');
+
+                state.selectedLeft = null;
+
+                document.querySelectorAll('.matching-card').forEach(card => {
+                    card.classList.remove('ring-4', 'ring-purple-400', 'border-purple-500');
+                });
+            }
+        }
+
+        function setMatchingStatus(message, success) {
+            const el = document.getElementById('matching-status');
+            if (!el) return;
+
+            el.textContent = message;
+            el.className =
+                'text-center text-sm font-black ' +
+                (success
+                    ? 'text-emerald-600 dark:text-emerald-400'
+                    : 'text-slate-500 dark:text-slate-400');
+        }
+
+        function startMatchingTimer(seconds) {
+            if (window.customMatchingTimer) {
+                clearInterval(window.customMatchingTimer);
+            }
+
+            let remaining = seconds;
+            const timerEl = document.getElementById('matching-timer');
+
+            window.customMatchingTimer = setInterval(() => {
+                remaining--;
+
+                if (timerEl) {
+                    timerEl.textContent = `⏱ ${remaining}s`;
+                }
+
+                if (remaining <= 0) {
+                    clearInterval(window.customMatchingTimer);
+                    window.customMatchingTimer = null;
+
+                    if (customMatchingState) {
+                        customMatchingState.timeExpired = true;
+                    }
+
+                    setMatchingStatus('⏰ Time is up!', false);
+
+                    setTimeout(() => {
+                        STATE.customGameQuestionIdx++;
+                        renderCustomQuestion();
+                    }, 900);
+                }
+            }, 1000);
+        }
+
+        function finishMatchingQuestion() {
+            if (window.customMatchingTimer) {
+                clearInterval(window.customMatchingTimer);
+                window.customMatchingTimer = null;
+            }
+
+            const state = customMatchingState;
+
+            if (!state) return;
+
+            STATE.customGameScore += state.points;
+
+            document.getElementById('custom-game-score').textContent =
+                `⭐ Score: ${STATE.customGameScore}`;
+
+            AudioEngine.playFanfare();
+
+            setMatchingStatus(
+                `🎉 Perfect! +${state.points} points`,
+                true
+            );
+
+            setTimeout(() => {
+                STATE.customGameQuestionIdx++;
+                renderCustomQuestion();
+            }, 900);
         }
 
         function submitCustomAnswer(userAns, correctAns) {
@@ -1372,7 +2714,10 @@
             } else {
                 AudioEngine.speak('Nice try!');
             }
-            document.getElementById('custom-game-score').textContent = `⭐ Score: ${STATE.customGameScore}`;
+
+            document.getElementById('custom-game-score').textContent =
+                `⭐ Score: ${STATE.customGameScore}`;
+
             STATE.customGameQuestionIdx++;
             renderCustomQuestion();
         }
@@ -1497,9 +2842,9 @@
                 </p>
 
                 <div class="flex justify-center gap-4">
-                    <button onclick="checkFruitCompare2('<')" class="w-20 h-20 rounded-2xl bg-purple-600 hover:bg-purple-700 text-white font-black text-3xl shadow-lg hover:scale-110 transition">&lt;</button>
-                    <button onclick="checkFruitCompare2('=')" class="w-20 h-20 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-3xl shadow-lg hover:scale-110 transition">=</button>
-                    <button onclick="checkFruitCompare2('>')" class="w-20 h-20 rounded-2xl bg-pink-600 hover:bg-pink-700 text-white font-black text-3xl shadow-lg hover:scale-110 transition">&gt;</button>
+                    <button onclick="checkFruitCompare2('<')" class="px-6 sm:px-8 py-4 rounded-2xl bg-purple-600 hover:bg-purple-700 text-white font-black text-xl shadow-lg hover:scale-105 transition">LESS</button>
+                    <button onclick="checkFruitCompare2('=')" class="px-6 sm:px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xl shadow-lg hover:scale-105 transition">EQUAL</button>
+                    <button onclick="checkFruitCompare2('>')" class="px-6 sm:px-8 py-4 rounded-2xl bg-pink-600 hover:bg-pink-700 text-white font-black text-xl shadow-lg hover:scale-105 transition">MORE</button>
                 </div>
             `;
         }
@@ -1740,3 +3085,248 @@
     </script>
 </body>
 </html>
+<script>
+const flashTrainData = [
+    ["a","🍎","apple"],["b","⚽","ball"],["c","🐱","cat"],["d","🐶","dog"],
+    ["e","🐘","elephant"],["f","🐟","fish"],["g","🍇","grapes"],["h","🏠","house"],
+    ["i","🍦","ice cream"],["j","🧃","juice"],["k","🪁","kite"],["l","🦁","lion"],
+    ["m","🌙","moon"],["n","🐦","nest"],["o","🍊","orange"],["p","🍕","pizza"],
+    ["q","👑","queen"],["r","🐰","rabbit"],["s","☀️","sun"],["t","🐯","tiger"],
+    ["u","☂️","umbrella"],["v","🚐","van"],["w","🍉","watermelon"],["x","🎄","xmas tree"],
+    ["y","🧶","yarn"],["z","🦓","zebra"]
+];
+
+let flashTrainIndex = 0;
+let flashTrainScore = 0;
+let flashTrainCollected = [];
+let flashTrainOptions = [];
+let flashTrainLocked = false;
+
+function startFlashCards() {
+    navigateTo('game-flashcards');
+    flashTrainIndex = 0;
+    flashTrainScore = 0;
+    flashTrainCollected = [];
+    flashTrainLocked = false;
+
+    const complete = document.getElementById('flashcards-complete');
+    if (complete) complete.classList.add('hidden');
+
+    renderFlashTrain();
+}
+
+function renderFlashTrain() {
+    const target = flashTrainData[flashTrainIndex];
+    if (!target) return;
+
+    flashTrainLocked = false;
+
+    const progress = document.getElementById('flashcards-progress');
+    const score = document.getElementById('flashcards-score');
+    const question = document.getElementById('flashcards-question');
+    const feedback = document.getElementById('flashcards-feedback');
+    const bogies = document.getElementById('flashcard-bogies');
+
+    if (progress) progress.textContent = `🚂 ${target[0]} / 26`;
+    if (score) score.textContent = `⭐ ${flashTrainScore}`;
+    if (question) question.textContent = `Which one starts with ${target[0]}?`;
+    if (feedback) feedback.textContent = "";
+
+    flashTrainOptions = makeFlashTrainOptions(flashTrainIndex);
+
+    if (bogies) {
+        bogies.innerHTML = flashTrainOptions.map((item, i) => `
+            <button type="button"
+                class="flash-train-bogie w-[105px] sm:w-[145px] min-h-[150px] sm:min-h-[180px] bg-white dark:bg-slate-800 border-4 border-cyan-200 dark:border-cyan-700 rounded-3xl p-3 sm:p-5 shadow-xl flex flex-col items-center justify-center transition-all hover:-translate-y-2 hover:shadow-2xl"
+                data-option-index="${i}"
+                onclick="chooseFlashTrainCard(${i})">
+                <span class="text-5xl sm:text-7xl mb-2">${item[1]}</span>
+                <span class="text-4xl sm:text-5xl font-black text-slate-800 dark:text-white">${item[0]}</span>
+                <span class="text-xs sm:text-sm font-black text-slate-400 mt-1">${item[2]}</span>
+            </button>
+        `).join("");
+    }
+
+    updateCollectedFlashCards();
+
+    setTimeout(() => speakFlashCardQuestion(), 250);
+}
+
+function makeFlashTrainOptions(index) {
+    const correct = flashTrainData[index];
+    const others = [];
+
+    let offset = 1;
+    while (others.length < 3 && offset < flashTrainData.length) {
+        const item = flashTrainData[(index + offset) % flashTrainData.length];
+        if (item[0] !== correct[0]) others.push(item);
+        offset++;
+    }
+
+    const choices = [correct, ...others];
+
+    for (let i = choices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [choices[i], choices[j]] = [choices[j], choices[i]];
+    }
+
+    return choices;
+}
+
+function chooseFlashTrainCard(optionIndex) {
+    if (flashTrainLocked) return;
+
+    const chosen = flashTrainOptions[optionIndex];
+    const correct = flashTrainData[flashTrainIndex];
+    const cards = document.querySelectorAll('.flash-train-bogie');
+    const card = cards[optionIndex];
+    const feedback = document.getElementById('flashcards-feedback');
+
+    if (!chosen || !card) return;
+
+    if (chosen[0] === correct[0]) {
+        flashTrainLocked = true;
+        flashTrainScore++;
+        flashTrainCollected.push(correct);
+
+        card.classList.add('animate-bounce', 'border-green-400', 'bg-green-50', 'dark:bg-green-900/30');
+
+        if (feedback) {
+            feedback.innerHTML = `
+                <div class="text-green-600 dark:text-green-400">
+                    ⭐ ⭐ ⭐ Great job! 🎉
+                </div>
+            `;
+        }
+
+        playFlashSuccess();
+        speakText("Great job!");
+
+        setTimeout(() => {
+            flashTrainIndex++;
+
+            if (flashTrainIndex >= flashTrainData.length) {
+                showFlashTrainComplete();
+            } else {
+                renderFlashTrain();
+            }
+        }, 1200);
+
+    } else {
+        card.classList.remove('animate-bounce');
+        card.classList.add('animate-pulse', 'border-orange-400');
+
+        if (feedback) {
+            feedback.innerHTML = `
+                <div class="text-orange-500">
+                    😊 Try again!
+                </div>
+            `;
+        }
+
+        speakText("Try again!");
+
+        setTimeout(() => {
+            card.classList.remove('animate-pulse', 'border-orange-400');
+        }, 600);
+    }
+}
+
+function speakText(text) {
+    if (!('speechSynthesis' in window)) return;
+
+    try {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "en-US";
+        utterance.rate = 0.85;
+        utterance.pitch = 1.15;
+        window.speechSynthesis.speak(utterance);
+    } catch (e) {}
+}
+
+function speakFlashCardQuestion() {
+    const target = flashTrainData[flashTrainIndex];
+    if (!target) return;
+
+    speakText(`Which one starts with ${target[0]}?`);
+}
+
+function playFlashSuccess() {
+    try {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) return;
+
+        const ctx = new AudioContextClass();
+        const now = ctx.currentTime;
+
+        [523.25, 659.25, 783.99].forEach((frequency, i) => {
+            const oscillator = ctx.createOscillator();
+            const gain = ctx.createGain();
+
+            oscillator.frequency.value = frequency;
+            oscillator.type = "sine";
+
+            gain.gain.setValueAtTime(0.001, now + i * 0.1);
+            gain.gain.exponentialRampToValueAtTime(0.12, now + i * 0.1 + 0.03);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.1 + 0.25);
+
+            oscillator.connect(gain);
+            gain.connect(ctx.destination);
+
+            oscillator.start(now + i * 0.1);
+            oscillator.stop(now + i * 0.1 + 0.28);
+        });
+
+        setTimeout(() => {
+            try { ctx.close(); } catch (e) {}
+        }, 700);
+    } catch (e) {}
+}
+
+function updateCollectedFlashCards() {
+    const box = document.getElementById('flashcards-collected');
+    const count = document.getElementById('flashcards-collected-count');
+
+    if (count) count.textContent = `${flashTrainCollected.length} / 26`;
+
+    if (!box) return;
+
+    box.innerHTML = flashTrainCollected.length
+        ? flashTrainCollected.map(card => `
+            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-cyan-100 dark:bg-cyan-900/50 border-2 border-cyan-300 dark:border-cyan-700 rounded-xl flex flex-col items-center justify-center">
+                <span class="text-lg sm:text-xl">${card[1]}</span>
+                <span class="text-xs font-black text-cyan-700 dark:text-cyan-300">${card[0]}</span>
+            </div>
+        `).join("")
+        : `<span class="text-slate-400 font-bold text-sm">Your collected cards will appear here 🚂</span>`;
+}
+
+function showFlashTrainComplete() {
+    flashTrainLocked = true;
+
+    const complete = document.getElementById('flashcards-complete');
+    const progress = document.getElementById('flashcards-progress');
+    const score = document.getElementById('flashcards-score');
+    const feedback = document.getElementById('flashcards-feedback');
+
+    if (progress) progress.textContent = "🏆 a–z complete!";
+    if (score) score.textContent = `⭐ ${flashTrainScore} / 26`;
+
+    if (feedback) {
+        feedback.innerHTML = `
+            <div class="text-purple-600 dark:text-purple-400">
+                🎉 All aboard! You did it!
+            </div>
+        `;
+    }
+
+    if (complete) complete.classList.remove('hidden');
+
+    speakText("Amazing! You completed a to z!");
+}
+
+function resetFlashCards() {
+    startFlashCards();
+}
+</script>
