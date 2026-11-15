@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="An unfolded colorful map with a location pin">
+<defs><linearGradient id="paper" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff4c7"/><stop offset="1" stop-color="#e9c978"/></linearGradient><linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a9e8ff"/><stop offset="1" stop-color="#58b9ed"/></linearGradient></defs>
+<path d="M78 115 238 76l164 42 151-42 20 224-160 43-169-42-147 44Z" fill="#b77935" opacity=".18"/>
+<path d="M73 98 232 57l164 43 157-42 19 221-158 44-170-42-151 43Z" fill="url(#paper)" stroke="#8a5b2e" stroke-width="11" stroke-linejoin="round"/>
+<path d="m232 57 10 224m154-181 8 221m149-264 0 221" fill="none" stroke="#c49a56" stroke-width="6"/>
+<path d="M91 124 224 91l10 174-126 36Z" fill="#d7ef9a"/><path d="m253 108 128 30 7 169-126-32Z" fill="#bde98c"/><path d="m411 139 124-34 13 171-130 35Z" fill="#c9ed8e"/>
+<path d="M89 220c47-31 70-20 103 0s59 19 91 0 60-24 99 0 71 28 119-2 63-19 86-6" fill="none" stroke="#36a9e8" stroke-width="23" stroke-linecap="round"/><path d="M90 212c48-31 70-20 103 0s59 19 91 0 60-24 99 0 71 28 119-2 63-19 86-6" fill="none" stroke="#b9efff" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+<g fill="#389b4b" stroke="#24763c" stroke-width="4"><circle cx="148" cy="156" r="18"/><circle cx="173" cy="163" r="14"/><path d="M158 170v30m-13-5h27"/><circle cx="330" cy="170" r="20"/><circle cx="355" cy="176" r="15"/><path d="M342 190v28m-13-5h27"/><circle cx="475" cy="231" r="18"/><circle cx="495" cy="238" r="13"/><path d="M486 247v25m-12-4h24"/></g>
+<path d="M443 91c-29 0-52 23-52 52 0 40 52 99 52 99s52-59 52-99c0-29-23-52-52-52Z" fill="#ef4444" stroke="#991b1b" stroke-width="8"/><circle cx="443" cy="143" r="18" fill="#fff" stroke="#b91c1c" stroke-width="6"/>
+</svg>

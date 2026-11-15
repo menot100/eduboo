@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="A young child sitting on an adult's lap">
+<defs><linearGradient id="shirt" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff8bb5"/><stop offset="1" stop-color="#e93d88"/></linearGradient><linearGradient id="pants" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#438de0"/><stop offset="1" stop-color="#174c9a"/></linearGradient></defs>
+<!-- adult's legs and lap -->
+<path d="M116 335c12-70 67-103 145-95l142 15c82 9 134 51 151 117l-27 27H113Z" fill="#263f70" stroke="#172b50" stroke-width="9"/>
+<path d="M119 347c31-32 82-40 133-21l92 34-8 39H109Z" fill="#365a91"/>
+<!-- adult torso and arm -->
+<path d="M151 88c27-44 92-61 143-32 40 23 62 71 58 119l-14 131-179 14-47-128c-16-44 2-83 39-104Z" fill="url(#shirt)" stroke="#a92b68" stroke-width="9"/>
+<path d="M144 203c-29 18-34 59-6 85l83 63c23 18 50 14 64-5 12-17 7-37-11-51l-77-62c-17-14-33-33-53-30Z" fill="#f1b78f" stroke="#a9654a" stroke-width="8"/>
+<!-- child legs seated across lap -->
+<path d="M298 261c36-26 91-16 110 19l35 65c9 18-2 37-23 39l-76 4c-29 1-47-14-57-39l-21-51c-7-16 12-29 32-37Z" fill="url(#pants)" stroke="#183f7d" stroke-width="8"/>
+<path d="M380 329c16-13 38-11 52 3l34 28c12 10 7 29-9 32l-65 7c-20 2-35-11-33-29 1-17 8-30 21-41Z" fill="#f1b78f" stroke="#a9654a" stroke-width="7"/>
+<!-- child's green shirt and body -->
+<path d="M266 169c22-31 73-39 107-18 26 16 34 51 22 82l-29 61c-9 18-37 24-57 11l-67-47c-20-15-18-59 24-89Z" fill="#43c66b" stroke="#258345" stroke-width="8"/>
+<!-- child's head -->
+<path d="M265 92c15-44 74-61 117-31 43 30 51 91 20 128-24 28-74 34-110 8-34-24-43-66-27-105Z" fill="#f2b98f" stroke="#a9654a" stroke-width="8"/>
+<path d="M256 119c-13-47 16-92 65-101 43-8 91 17 101 62-31-14-58-8-78 11-18-14-47-9-61 9-9 11-17 20-27 19Z" fill="#71371f" stroke="#482315" stroke-width="8"/>
+<path d="M284 143q13 9 25 0M354 143q13 9 25 0" fill="none" stroke="#4a2d27" stroke-width="6" stroke-linecap="round"/><path d="M316 172q18 14 35-1" fill="none" stroke="#b85e5a" stroke-width="6" stroke-linecap="round"/>
+<!-- adult hand gently resting around child -->
+<path d="M177 234c30-18 60 4 81 22l63 54c16 14 13 35-3 46-15 10-31 5-46-7l-82-63c-23-17-35-37-13-52Z" fill="#f5c39e" stroke="#a9654a" stroke-width="8"/>
+<path d="M158 100c22-24 43-31 68-26" fill="none" stroke="#ffb7d2" stroke-width="8" stroke-linecap="round"/>
+</svg>

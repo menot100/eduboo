@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="A clear gap between two grassy cliffs">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#9ee7ff"/><stop offset="1" stop-color="#e7faff"/></linearGradient><linearGradient id="soil" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#c77b39"/><stop offset="1" stop-color="#85451f"/></linearGradient></defs>
+<path d="M22 40h596v340H22Z" fill="url(#sky)"/>
+<g fill="#fff" opacity=".8"><ellipse cx="148" cy="80" rx="52" ry="18"/><ellipse cx="178" cy="73" rx="32" ry="23"/><ellipse cx="500" cy="72" rx="53" ry="18"/><ellipse cx="472" cy="65" rx="30" ry="22"/></g>
+<path d="M22 185 185 174l66 18-20 188H22Z" fill="url(#soil)" stroke="#87451e" stroke-width="8"/><path d="M618 184 455 174l-67 18 21 188h209Z" fill="url(#soil)" stroke="#87451e" stroke-width="8"/>
+<path d="M22 184c66-31 133-19 196-4l35 13-5 32c-52-10-91-1-119 14-37-13-69-10-107 1Z" fill="#45b94d"/><path d="M618 184c-66-31-133-19-196-4l-35 13 5 32c52-10 91-1 119 14 37-13 69-10 107 1Z" fill="#45b94d"/>
+<g fill="#2d8b3f"><path d="m72 177 10-35 10 35Z"/><path d="m110 178 9-29 10 29Z"/><path d="m526 178 10-35 10 35Z"/><path d="m565 179 9-29 10 29Z"/></g>
+<path d="M246 188h148v24H246Z" fill="#9a6338" opacity=".0"/>
+<path d="M253 183c43-18 91-18 134 0" fill="none" stroke="#69c86a" stroke-width="9" stroke-linecap="round"/>
+<path d="M250 226v154M390 226v154" stroke="#6c371a" stroke-width="5" opacity=".5"/>
+<path d="M276 282h88" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-dasharray="8 15" opacity=".8"/>
+<path d="M262 258h116" stroke="#f8fafc" stroke-width="6" stroke-linecap="round" opacity=".9"/><path d="m276 246-14 12 14 12M364 246l14 12-14 12" fill="none" stroke="#ef4444" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
